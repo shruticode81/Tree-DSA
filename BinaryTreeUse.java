@@ -1,21 +1,49 @@
 import java.util.Scanner;
 
 public class BinaryTreeUse {
-    public static BinaryTreeNode<Integer> takeInput(){
+  
+    public static BinaryTreeNode<Integer> takeInputBetter(boolean isRoot,int parentData,boolean isLeft){
+        if(isRoot){
+            System.out.println("Enter root data:");
+        }else{
+            if(isLeft){
+                System.out.println("Enter left child data of "+parentData );
+            }else{
+                System.out.println("Enter right child data of "+ parentData);
+            }
+               
+           
+        }
         Scanner s = new Scanner(System.in);
-        System.out.println("Enter root data:");
+      
         int rootData = s.nextInt();
         if(rootData==-1){
             return null;
         }
         BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(rootData);
-        BinaryTreeNode<Integer> leftTree = takeInput();
-        BinaryTreeNode<Integer> rightTree = takeInput();
+        BinaryTreeNode<Integer> leftTree = takeInputBetter(false,rootData,true);
+        BinaryTreeNode<Integer> rightTree = takeInputBetter(false,rootData,false);
         root.left = leftTree;
         root.right = rightTree;
         return root;
 
     }
+
+    // public static BinaryTreeNode<Integer> takeInput(){
+    //     Scanner s = new Scanner(System.in);
+    //     System.out.println("Enter root data:");
+    //     int rootData = s.nextInt();
+    //     if(rootData==-1){
+    //         return null;
+    //     }
+    //     BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(rootData);
+    //     BinaryTreeNode<Integer> leftTree = takeInput();
+    //     BinaryTreeNode<Integer> rightTree = takeInput();
+    //     root.left = leftTree;
+    //     root.right = rightTree;
+    //     return root;
+
+    // }
     public static void printTree(BinaryTreeNode<Integer> root){
         //print tree structure root,leftsubtree,right subtree
         if(root==null){
@@ -53,7 +81,7 @@ public class BinaryTreeUse {
         // left1.right = right2;
         // right1.left = left2;
         // printTree(root);
-        BinaryTreeNode<Integer> root =  takeInput();
+        BinaryTreeNode<Integer> root =  takeInputBetter(true,0,false);
         printTreeDetailed(root);
     }
 }
