@@ -1,6 +1,16 @@
 import java.util.Scanner;
 
 public class BinaryTreeUse {
+    
+    // Code for finding number of nodes
+    public static int NumNode(BinaryTreeNode<Integer> root){
+        if(root == null){
+            return 0;
+        }
+        int leftNode = NumNode(root.left);
+        int rightNode = NumNode(root.right);
+        return 1+leftNode+rightNode;
+    }
   
     public static BinaryTreeNode<Integer> takeInputBetter(boolean isRoot,int parentData,boolean isLeft){
         if(isRoot){
@@ -83,5 +93,6 @@ public class BinaryTreeUse {
         // printTree(root);
         BinaryTreeNode<Integer> root =  takeInputBetter(true,0,false);
         printTreeDetailed(root);
+        System.out.println("No. of node in tree with root "+root.data+" "+NumNode(root));
     }
 }
