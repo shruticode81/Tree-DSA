@@ -1,7 +1,16 @@
 import java.util.Scanner;
 
 public class BinaryTreeUse {
-    
+    // Code to find sum of nodes data
+    public static int SumNode(BinaryTreeNode<Integer> root){
+        if(root==null){
+            return 0;
+        }
+        int sumLeft = SumNode(root.left);
+        int sumRight = SumNode(root.right);
+        return root.data+sumLeft+sumRight;
+    }
+
     // Code for finding number of nodes
     public static int NumNode(BinaryTreeNode<Integer> root){
         if(root == null){
@@ -94,5 +103,6 @@ public class BinaryTreeUse {
         BinaryTreeNode<Integer> root =  takeInputBetter(true,0,false);
         printTreeDetailed(root);
         System.out.println("No. of node in tree with root "+root.data+" "+NumNode(root));
+        System.out.println("Sum of nodes are : "+SumNode(root));
     }
 }
